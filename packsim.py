@@ -1,5 +1,6 @@
 import random
 
+
 def playerNameGen():
     firstNames = ["Dequarius", "Lamar", "Lonzo", "Kunta", "Ezekial", "Charles", "Carmelon", "Kobus", "Elvin", "Julius", "Dolph"]
     lastNames =["Carter", "Smiff", "Johnson", "Porter", "Ali", "Byrd", "Wilkins", "Morris", "Paul", "Cole", "Miller"]
@@ -11,13 +12,26 @@ def playerNameGen():
 
     return playerName
 
-numCards = 5
+def setFoilStatus():
+    fStatus="Non-Foil"
+    if random.randint(0,10) == 10:
+        fStatus="Foil"
+    return fStatus
 
-cardsInPack = []
+def setAutoStatus():
+    aStatus="Non-Auto"
+    if random.randint(0,100) == 100:
+        aStatus="Auto"
+    return aStatus
 
-for i in range(0,numCards):
-    getName = playerNameGen()
-    cardsInPack.insert(i, getName)
+case_list=[]
 
-print (cardsInPack)
+for i in range (0,15):
+    getName =playerNameGen()
+    getFoil = setFoilStatus()
+    getAuto = setAutoStatus()
+    case ={getName: (getFoil,getAuto)}
+    case_list.append(case)
 
+for i, v in enumerate(case_list):
+    print (i,v)
